@@ -24,6 +24,7 @@
 		CD541F0125AF0C27002179A4 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD541F0025AF0C27002179A4 /* PostData.swift */; };
 		CD541F0425AF0C98002179A4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD541F0225AF0C98002179A4 /* PostTableViewCell.swift */; };
 		CD541F0525AF0C98002179A4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD541F0325AF0C98002179A4 /* PostTableViewCell.xib */; };
+		CD5A4EF025B18CE900B31EC4 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A4EEF25B18CE900B31EC4 /* ArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		CD541F0025AF0C27002179A4 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		CD541F0225AF0C98002179A4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CD541F0325AF0C98002179A4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		CD5A4EEF25B18CE900B31EC4 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				CD541F0025AF0C27002179A4 /* PostData.swift */,
 				CD541F0225AF0C98002179A4 /* PostTableViewCell.swift */,
 				CD541F0325AF0C98002179A4 /* PostTableViewCell.xib */,
+				CD5A4EEF25B18CE900B31EC4 /* ArticleViewController.swift */,
 				CD541EE225AEF39A002179A4 /* Main.storyboard */,
 				CD541EE525AEF39B002179A4 /* Assets.xcassets */,
 				CD541EE725AEF39B002179A4 /* LaunchScreen.storyboard */,
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD541F0425AF0C98002179A4 /* PostTableViewCell.swift in Sources */,
+				CD5A4EF025B18CE900B31EC4 /* ArticleViewController.swift in Sources */,
 				CD541EF525AEF435002179A4 /* ImageSelectViewController.swift in Sources */,
 				CD541EFB25AEF6A1002179A4 /* TabBarController.swift in Sources */,
 				CD541EF325AEF423002179A4 /* HomeViewController.swift in Sources */,

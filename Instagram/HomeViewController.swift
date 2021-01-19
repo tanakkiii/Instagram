@@ -78,7 +78,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
 
+        cell.commentButton.addTarget(self, action:#selector(tappedCommentButton(_:forEvent:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    
+    @objc func tappedCommentButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: commentボタンがタップされました。")
+        
+        // ①storyboardのインスタンス取得
+        let storyboard: UIStoryboard = self.storyboard!
+        // ②遷移先ViewControllerのインスタンス取得
+        let articleViewController = storyboard.instantiateViewController(withIdentifier: "Article") as! ArticleViewController
+        
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        articleViewController.postDataReceived = postData
+        
+        // ③画面遷移
+        self.present(articleViewController, animated: true, completion: nil)
+        
     }
     
     // セル内のボタンがタップされた時に呼ばれるメソッド

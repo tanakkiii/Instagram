@@ -21,6 +21,11 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     
+    @IBOutlet weak var commentButton: UIButton!
+    
+    @IBOutlet weak var commentLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +47,10 @@ class PostTableViewCell: UITableViewCell {
 
         // キャプションの表示
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        
+        // コメントの表示
+        self.commentLabel.text = "\(postData.name!) : \(postData.comment ?? "")"
+       
 
         // 日時の表示
         self.dateLabel.text = ""
