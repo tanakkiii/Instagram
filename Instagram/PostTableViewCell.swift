@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseUI
+import Firebase
 
 class PostTableViewCell: UITableViewCell {
     
@@ -26,6 +27,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     
     
+    var postArray: [PostData] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,21 +39,41 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    var userName = Auth.auth().currentUser?.displayName
+    
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
         // 画像の表示
         postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         postImageView.sd_setImage(with: imageRef)
-
+        
+        
+        
         // キャプションの表示
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
         
+        
+        // 一時的にコメントを格納する変数を定義
+        var comment_text: String = " "
+        // comという変数で配列からコメントを1つずつ取り出し
+        for com in postData.comment {
+          comment_text += com + "\n"
+        }
+        print(comment_text)
+        
         // コメントの表示
-        self.commentLabel.text = "\(postData.name!) : \(postData.comment ?? "")"
-       
+        self.commentLabel.text = comment_text
+        
 
+        
+//        self.commentLabel.text = "\(userName!) : \(postData.comment)"
+//        self.commentLabel.text = "\(postData.name!) : \(postData.comment ?? "")"
+//        if postData.comment == nil {
+//
+//        }
+        
         // 日時の表示
         self.dateLabel.text = ""
         if let date = postData.date {

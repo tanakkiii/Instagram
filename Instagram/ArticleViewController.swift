@@ -114,18 +114,41 @@ class ArticleViewController: UIViewController {
         }
     }
         // コメントの保存場所を定義する
-        let commentRef = Firestore.firestore().collection(Const.PostPath).document(postDataReceived.id)
+//        let commentRef = Firestore.firestore().collection(Const.PostPath).document(postDataReceived.id)
         
         // HUDで投稿処理中の表示を開始
         SVProgressHUD.show()
 
         // FireStoreに名前とコメントを保存する
-        let name = Auth.auth().currentUser?.displayName
-        let commentDic = [
-                 "name": name!,
-                 "comment": self.commentTextField.text!
-            ] as [String : Any]
-        commentRef.updateData(commentDic)
+//        let name = Auth.auth().currentUser?.displayName
+        
+//        let commentDic = [
+//                 "name": name!,
+//                 "comment": self.commentTextField.text!
+//            ] as [String : Any]
+//        commentRef.updateData([
+//            "comment" : commentTextField.text!,
+//            "name" : name!
+//        ])
+//        commentRef.updateData(commentDic)
+        
+        
+        //　コメントとログイン中のユーザー名を保存
+        let username_comment = Auth.auth().currentUser!.displayName! + ":" + self.commentTextField.text!
+            var updateValue: FieldValue
+            updateValue = FieldValue.arrayUnion([username_comment])
+            // comment に更新データを書き込む
+            let postRef = Firestore.firestore().collection(Const.PostPath).document(postDataReceived.id)
+            postRef.updateData(["comment": updateValue])
+        
+        // コメントを投稿した人の名前を保存
+//        if let commentUserName = Auth.auth().currentUser?.displayName {
+//            var updateValue: FieldValue
+//            updateValue = FieldValue.arrayUnion([commentUserName])
+//            let postRef = Firestore.firestore().collection(Const.PostPath).document(postDataReceived.id)
+//            postRef.updateData(["comment": updateValue])
+//        }
+        
         
         // 投稿完了を表示
         SVProgressHUD.showSuccess(withStatus: "投稿しました")
